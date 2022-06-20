@@ -1,0 +1,32 @@
+{
+  "name": "deel-task",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "4.17.1",
+    "sequelize": "^6.3.4",
+    "sqlite3": "^4.0.1"
+  },
+  "scripts": {
+    "start": "nodemon ./src/server.js",
+    "seed": "node ./scripts/seedDb.js",
+    "test": "jest"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ]
+  },
+  "devDependencies": {
+    "concurrently": "4.1.0",
+    "jest": "^28.1.1",
+    "nodemon": "1.19.1",
+    "supertest": "^6.2.3"
+  },
+  "engines": {
+    "node": ">=10.16.3"
+  },
+  "engineStrict": true
+}
