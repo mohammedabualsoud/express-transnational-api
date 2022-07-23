@@ -151,7 +151,7 @@ app.get("/admin/best-profession", getProfile, async (req, res) => {
   try {
     const sequelize = req.app.get("sequelize");
     const { start, end } = req.query;
-    console.log(req.query);
+
     if (!start || !end) {
       return res.status(400).json({
         error: "start, end is required",
@@ -159,8 +159,8 @@ app.get("/admin/best-profession", getProfile, async (req, res) => {
     }
 
     const query = `
-    SELECT *, MAX(priceCount) as bestProfession FROM
-    (SELECT *, SUM(price) AS priceCount from Jobs WHERE paid = 1 AND (paymentDate BETWEEN $1 and $2) GROUP by ContractId)
+
+   SELECT *, MAX(price) AS bestProfession from Jobs WHERE paid = 1 AND (paymentDate BETWEEN $1 and $2) GROUP by ContractId ORDER BY  bestProfession DESC LIMIT 0, 1
 `;
     const [results] = await sequelize.query(query, {
       bind: [start, end],
