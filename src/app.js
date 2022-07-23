@@ -78,6 +78,12 @@ app.post("/jobs/:job_id/pay", getProfile, async (req, res) => {
     const { job_id: jobId } = req.params;
     const job = await Job.findByPk(jobId, { include: Contract });
 
+    if (job.paid) {
+      return res.status(400).json({
+        error: "The job is already paid.",
+      });
+    }
+
     await job.payForContractor(balance);
 
     return res.status(200).json(await job.reload());

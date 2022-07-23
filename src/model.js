@@ -99,17 +99,21 @@ class Job extends Sequelize.Model {
       await Promise.all([
         Profile.decrement(
           { balance: price },
-          { where: { id: ClientId }, transaction: t }
+          { where: { id: ClientId }, lock: true, transaction: t }
         ),
         Profile.increment(
           { balance: price },
-          { where: { id: ContractorId }, transaction: t }
+          { where: { id: ContractorId }, lock: true, transaction: t }
         ),
         this.update(
           { paid: true, paymentDate: new Date() },
-          { transaction: t }
+
+          { transaction: t, lock: true }
         ),
-        this.Contract.update({ status: "terminated" }, { transaction: t }),
+        this.Contract.update(
+          { status: "terminated" },
+          { transaction: t, lock: true }
+        ),
       ]);
 
       return await t.commit();
