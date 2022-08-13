@@ -88,14 +88,4 @@ Below is a list of the required API's for the application.
 ]
 ```
 
-## Going Above and Beyond the Requirements
 
-Given the time expectations of this exercise, we don't expect anyone to submit anything super fancy, but if you find yourself with extra time, any extra credit item(s) that showcase your unique strengths would be awesome! 🙌
-
-It would be great for example if you'd write some unit test / simple frontend demostrating calls to your fresh APIs.
-
-## Submitting the Assignment
-
-When you have finished the assignment, create a github repository and send us the link.
-
-Thank you and good luck! 🙏
